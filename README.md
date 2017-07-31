@@ -1,51 +1,5 @@
 # Spotify Authorization With React + React-Router
-
-This is an example application demonstrating authenticating a user
-[against the Spotify Web API][sag], using [React][r] and [React-Router][rr]
-and [Redux][rx] and [React-Router-Redux][rrr].
-
-## Similarities to Spotify's [Web Auth Examples][wae]
-
-This example is a variation on the `authorization_code` demo from Spotify's
-[Web Auth Examples][wae]. The main difference is the client code; whereas their
-example is contained in one `index.html` file, this example shows how to do the
-same thing with React and React-Router.
-
-The other difference is the updated server code. Instead of using `request`
-directly (and XHR in the browser), this example interfaces with Spotify through
-the [Spotify Web API Node Module][swn] (and [Spotify Web Api Client][swj] in the
-browser). It also uses fun ES6 goodness. I opened a [pull request][spr] with
-them to update their server code to what you see here.
-
-## Client Code Structure
-
-The client code is built with [React][r] and [React-Router][rr] and [Redux][rx]
-and [React-Router-Redux][rrr]. phew!
-
-The only real config this requires is in `client/index.js`:
-
-~~~js
-class Root extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Router history={hashHistory}>
-          <Route path="/" component={App}>
-            <IndexRoute component={Login} />
-            <Route path="/user/:accessToken/:refreshToken" component={User} />
-            <Route path="/error/:errorMsg" component={Error} />
-          </Route>
-        </Router>
-      </Provider>
-    );
-  }
-}
-~~~
-
-Here, we initialize redux with our store, initialize react router with its
-history object. Everything else is a fairly traditional React app - the
-components are in `client/components`, the actions are in `client/actions`,
-and the reducer is in `client/reducers`.
+Authors: Patrick Cook, Carson Holoien
 
 ## Server Code Structure
 
@@ -85,6 +39,7 @@ There are three scripts - `start`, `dev`, and `build`.
 To run the production bundle:
 
 ~~~bash
+$ npm install
 $ npm run build
 $ npm start
 ~~~
@@ -94,37 +49,3 @@ To run in dev mode (with hot reloading, and un-minified source maps):
 ~~~bash
 $ npm run dev
 ~~~
-
-## Further Reading
-
-The application structure is a simplified version of my
-[React + Redux + Webpack Boilerplate][bp] for better ease of understanding.
-It can certainly be awesome-ified (and maybe a little more complicated) by
-doing some of the fun tricks in there.
-
-  - [Spotify's Getting Started Guide][sgs]
-  - [Spotify's Web API Authorization Guide][sag]
-  - [Spotify Web API Node][swn]
-  - [Spotify Web API JS/Client][swj]
-  - [Spotify's Web API Auth Exampls][wae]
-  - [My Pull Request enhancing Spotify's examples][spr]
-  - [React Router][rr]
-  - [React Router Redux][rrr]
-  - [React][r]
-  - [Redux][rx]
-  - [Better NPM Run][bnr]
-  - [React + Redux + Webpack Boilerplate][bp]
-
-[sgs]: https://developer.spotify.com/web-api/tutorial/
-[sag]: https://developer.spotify.com/web-api/authorization-guide/
-[swn]: https://github.com/JMPerez/spotify-web-api-node
-[swj]: https://github.com/JMPerez/spotify-web-api-js
-[wae]: https://github.com/spotify/web-api-auth-examples
-[spr]: https://github.com/spotify/web-api-auth-examples/pull/7
-[rr]:  https://github.com/rackt/react-router
-[rrr]: https://github.com/rackt/react-router-redux
-[r]:   https://facebook.github.io/react/
-[rx]:  http://redux.js.org/
-[bnr]: https://www.npmjs.com/package/better-npm-run
-[bp]:  https://github.com/kauffecup/react-redux-webpack-boilerplate
-# spotify_playlists
